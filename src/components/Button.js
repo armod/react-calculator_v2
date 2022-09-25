@@ -2,9 +2,14 @@ import React from 'react'
 import { useGlobalContext } from '../context'
 
 export const Button = () => {
-  const { bckg } = useGlobalContext()
+  const { mode, zmienKolor } = useGlobalContext()
   return (
-    <button className='btn' style={{ background: bckg }}>
+    <button
+      className='btn'
+      onClick={() => {
+        zmienKolor()
+      }}
+    >
       button
     </button>
   )
