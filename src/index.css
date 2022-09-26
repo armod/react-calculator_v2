@@ -8,9 +8,19 @@
 
 body {
   font-family: 'Lato', sans-serif;
-  background: rgb(150, 150, 150);
+  /* background-color: rgb(150, 150, 150); */
   margin: 0 auto;
   font-size: 1rem;
+}
+
+.wrapper-light {
+  background-color: lightblue;
+  height: 100vh;
+}
+
+.wrapper-dark {
+  height: 100vh;
+  background-color: darkslateblue;
 }
 
 .container {

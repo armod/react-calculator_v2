@@ -2,18 +2,10 @@ import React, { useState, useReducer, useContext } from 'react'
 
 const AppContext = React.createContext()
 
-const theme = {
-  light: {
-    bckg: 'yellow',
-  },
-  dark: {
-    bckg: 'green',
-  },
-}
-
 const AppProvider = ({ children }) => {
   const [mode, setMode] = useState(true)
-  const zmienKolor = () => {
+
+  const changeColor = () => {
     if (mode == true) {
       console.log(mode)
       setMode(false)
@@ -23,7 +15,7 @@ const AppProvider = ({ children }) => {
   }
 
   return (
-    <AppContext.Provider value={{ mode, zmienKolor }}>
+    <AppContext.Provider value={{ mode, changeColor }}>
       {children}
     </AppContext.Provider>
   )
