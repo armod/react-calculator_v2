@@ -16,7 +16,7 @@ input {
 }
 
 input:checked {
-  background-color: chocolate;
+  background-color: rgb(240, 255, 101);
   box-shadow: inset 0 0 5px black;
 }
 
@@ -28,13 +28,15 @@ input:before {
   border-radius: 20px;
   top: 0;
   left: 0;
-  background: rgb(130, 8, 160);
-  transform: scale(1.2);
-  box-shadow: inset 0 0 3px black;
+  appearance: none;
+  outline: none;
+  background: rgb(100, 100, 100);
+  transform: scale(1.1);
+  box-shadow: inset 0 0 5px black;
   transition: 0.5s;
 }
 
 input:checked:before {
   left: 40px;
-  background: yellow;
+  background: rgb(100, 100, 100);
 }
