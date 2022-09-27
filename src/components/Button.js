@@ -1,5 +1,11 @@
 import React from 'react'
 
 export const Button = () => {
-  return <div>Button</div>
+  const button_tab = []
+
+  return (
+    <>
+      <button className='btn'></button>
+    </>
+  )
 }

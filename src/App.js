@@ -1,15 +1,16 @@
 import React from 'react'
 import { Button } from './components/Button'
+import { Container } from './components/Container'
 import { SwitchButton } from './components/SwitchButton'
 import { useGlobalContext } from './context'
-import './App.css'
 
 function App() {
   const { mode } = useGlobalContext()
   return (
-    <div className='App'>
-      <div className={`${mode ? 'wrapper-light' : 'wrapper-dark'}`}>
+    <div className='wrapper'>
+      <div className={`${mode ? 'wrapper light' : 'wrapper dark'}`}>
         <SwitchButton />
+        <Container />
       </div>
     </div>
   )
