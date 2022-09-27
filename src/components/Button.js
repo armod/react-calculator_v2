@@ -1,11 +1,7 @@
 import React from 'react'
+import { useGlobalContext } from '../context'
 
 export const Button = () => {
-  const button_tab = []
-
-  return (
-    <>
-      <button className='btn'></button>
-    </>
-  )
+  const { klawisze } = useGlobalContext()
+  return <></>
 }

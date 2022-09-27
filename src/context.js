@@ -4,6 +4,28 @@ const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
   const [mode, setMode] = useState(true)
+  const [klawisze, setKlawisze] = useState([
+    '%',
+    'C',
+    '/',
+    'back',
+    '7',
+    '8',
+    '9',
+    'x',
+    '4',
+    '5',
+    '6',
+    '-',
+    '1',
+    '2',
+    '3',
+    '+',
+    '+/-',
+    '0',
+    ',',
+    '=',
+  ])
 
   const changeColor = () => {
     if (mode == true) {
@@ -14,8 +36,12 @@ const AppProvider = ({ children }) => {
     }
   }
 
+  const ustawNazwe = () => {
+    setKlawisze(klawisze)
+  }
+
   return (
-    <AppContext.Provider value={{ mode, changeColor }}>
+    <AppContext.Provider value={{ mode, changeColor, klawisze }}>
       {children}
     </AppContext.Provider>
   )

@@ -1,33 +1,17 @@
 import React, { useState } from 'react'
+import { useGlobalContext } from '../context'
 import { Button } from './Button'
 
 export const ButtonsTable = () => {
-  const klawisze = [
-    '%',
-    'C',
-    '/',
-    'back',
-    '7',
-    '8',
-    '9',
-    'x',
-    '4',
-    '5',
-    '6',
-    '-',
-    '1',
-    '2',
-    '3',
-    '+',
-    '+/-',
-    '0',
-    ',',
-    '=',
-  ]
+  const { klawisze } = useGlobalContext()
   return (
     <>
       {klawisze.map((klawisz, index) => {
-        return <Button key={index} {...klawisz} />
+        return (
+          <button className='btn' key={index}>
+            {klawisz}
+          </button>
+        )
       })}
     </>
   )
