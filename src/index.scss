@@ -14,8 +14,8 @@ body {
 }
 
 .wrapper {
-  height: 100vh;
-  border: 3px solid red;
+  height: 90vh;
+  border: 2px solid red;
   // background-color: #fff;
   .light {
     background-color: rgb(189, 191, 192);
@@ -51,6 +51,7 @@ body {
   text-align: center;
   padding: 20px 0;
   cursor: pointer;
+  z-index: 100;
 }
 .btn2 {
   background-color: rgb(64, 226, 43);

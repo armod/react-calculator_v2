@@ -3,5 +3,9 @@ import { useGlobalContext } from '../context'
 
 export const Button = () => {
   const { klawisze } = useGlobalContext()
-  return <></>
+  return (
+    <>
+      <button className='btn'>XXX</button>
+    </>
+  )
 }
