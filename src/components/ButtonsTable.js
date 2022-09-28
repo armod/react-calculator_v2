@@ -3,19 +3,17 @@ import { useGlobalContext } from '../context'
 import { Button } from './Button'
 
 export const ButtonsTable = () => {
-  const { klawisze, oblicz, dodaj, handleNumber, handleOperator } =
-    useGlobalContext()
+  const { oblicz, handleNumber, clear, handleOperator } = useGlobalContext()
   return (
     <>
-      <button className='btn'>C</button>
-      <button className='btn'>/</button>
+      <button className='btn' onClick={clear}>
+        C
+      </button>
+      <button className='btn' value={'/'} onClick={handleOperator}>
+        /
+      </button>
       <button className='btn podwojny'>back</button>
-      <button
-        className='btn'
-        name='numer siedem'
-        value={7}
-        onClick={handleNumber}
-      >
+      <button className='btn' value={7} onClick={handleNumber}>
         7
       </button>
       <button className='btn' value={8} onClick={handleNumber}>
@@ -24,7 +22,9 @@ export const ButtonsTable = () => {
       <button className='btn' value={9} onClick={handleNumber}>
         9
       </button>
-      <button className='btn'>x</button>
+      <button className='btn' value={'x'} onClick={handleOperator}>
+        x
+      </button>
       <button className='btn' value={4} onClick={handleNumber}>
         4
       </button>
@@ -34,7 +34,9 @@ export const ButtonsTable = () => {
       <button className='btn' value={6} onClick={handleNumber}>
         6
       </button>
-      <button className='btn'>-</button>
+      <button className='btn' value={'-'} onClick={handleOperator}>
+        -
+      </button>
       <button className='btn' value={1} onClick={handleNumber}>
         1
       </button>
@@ -52,12 +54,7 @@ export const ButtonsTable = () => {
         0
       </button>
       <button className='btn'>,</button>
-      <button
-        className='btn rowna'
-        onClick={() => {
-          oblicz()
-        }}
-      >
+      <button className='btn rowna' value={'='} onClick={oblicz}>
         =
       </button>
     </>

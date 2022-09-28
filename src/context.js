@@ -7,33 +7,63 @@ const AppProvider = ({ children }) => {
   const initialState = {
     wynik: 0,
     liczba1: '',
-    liczba2: 0,
+    liczba2: '',
+    operator: '',
   }
   const [state, dispatch] = useReducer(reducer, initialState)
-  const oblicz = () => {
-    dispatch({ type: 'OBLICZ' })
-  }
-  const dodaj = () => {
-    dispatch({ type: 'DODAJ' })
-  }
 
-  const generujL1 = () => {
-    dispatch({ type: 'GENERUJ_L1' })
-  }
-  const generujL2 = () => {
-    dispatch({ type: 'GENERUJ_L2' })
+  const oblicz = () => {
+    let rezultat = 0
+    if (state.operator === '+') {
+      rezultat = Number(state.liczba1) + Number(state.liczba2)
+    }
+    if (state.operator === '-') {
+      rezultat = Number(state.liczba1) - Number(state.liczba2)
+    }
+    if (state.operator === 'x') {
+      rezultat = Number(state.liczba1) * Number(state.liczba2)
+    }
+    if (state.operator === '/') {
+      rezultat = Number(state.liczba1) / Number(state.liczba2)
+    }
+    dispatch({ type: 'OBLICZ', payload: rezultat })
   }
 
   const handleNumber = (e) => {
-    initialState.liczba1 += e.currentTarget.value
-    // console.log('nr=', e.currentTarget.value, 'name=', e.currentTarget.name)
-    console.log('handleNumber=', e.currentTarget.value, initialState.liczba1)
+    if (state.operator === '') {
+      state.operator = ''
+      e.preventDefault()
+      state.liczba1 += e.currentTarget.value
+      console.log('liczba1=', state.liczba1)
+      dispatch({ type: 'SHOW_L1', payload: state.liczba1 })
+    }
+    if (state.operator !== '') {
+      e.preventDefault()
+      state.liczba2 += e.currentTarget.value
+      console.log('liczba2=', state.liczba2)
+      dispatch({ type: 'SHOW_L2', payload: state.liczba2 })
+    }
   }
 
   const handleOperator = (e) => {
+    if (e.currentTarget.value === '+') {
+      state.operator = '+'
+    }
+    if (e.currentTarget.value === '-') {
+      state.operator = '-'
+    }
+    if (e.currentTarget.value === 'x') {
+      state.operator = 'x'
+    }
+    if (e.currentTarget.value === '/') {
+      state.operator = '/'
+    }
+    dispatch({ type: 'SHOW_OPERATOR', payload: state.operator })
     console.log('operator', e.currentTarget.value)
   }
-
+  const clear = () => {
+    dispatch({ type: 'CLEAR' })
+  }
   const [mode, setMode] = useState(true)
 
   const changeColor = () => {
@@ -52,11 +82,9 @@ const AppProvider = ({ children }) => {
         mode,
         changeColor,
         oblicz,
-        dodaj,
+        clear,
         handleNumber,
         handleOperator,
-        generujL1,
-        generujL2,
       }}
     >
       {children}
