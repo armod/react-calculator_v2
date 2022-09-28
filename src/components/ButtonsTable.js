@@ -3,7 +3,8 @@ import { useGlobalContext } from '../context'
 import { Button } from './Button'
 
 export const ButtonsTable = () => {
-  const { klawisze, oblicz, dodaj, handleNumber } = useGlobalContext()
+  const { klawisze, oblicz, dodaj, handleNumber, handleOperator } =
+    useGlobalContext()
   return (
     <>
       <button className='btn'>C</button>
@@ -11,94 +12,43 @@ export const ButtonsTable = () => {
       <button className='btn podwojny'>back</button>
       <button
         className='btn'
-        onClick={() => {
-          handleNumber(7)
-          console.log('handle number 7')
-        }}
+        name='numer siedem'
+        value={7}
+        onClick={handleNumber}
       >
         7
       </button>
-      <button
-        className='btn'
-        onClick={() => {
-          handleNumber(8)
-        }}
-      >
+      <button className='btn' value={8} onClick={handleNumber}>
         8
       </button>
-      <button
-        className='btn'
-        onClick={() => {
-          handleNumber(9)
-        }}
-      >
+      <button className='btn' value={9} onClick={handleNumber}>
         9
       </button>
       <button className='btn'>x</button>
-      <button
-        className='btn'
-        onClick={() => {
-          handleNumber(4)
-        }}
-      >
+      <button className='btn' value={4} onClick={handleNumber}>
         4
       </button>
-      <button
-        className='btn'
-        onClick={() => {
-          handleNumber(5)
-        }}
-      >
+      <button className='btn' value={5} onClick={handleNumber}>
         5
       </button>
-      <button
-        className='btn'
-        onClick={() => {
-          handleNumber(6)
-        }}
-      >
+      <button className='btn' value={6} onClick={handleNumber}>
         6
       </button>
       <button className='btn'>-</button>
-      <button
-        className='btn'
-        onClick={() => {
-          handleNumber(1)
-        }}
-      >
+      <button className='btn' value={1} onClick={handleNumber}>
         1
       </button>
-      <button
-        className='btn'
-        onClick={() => {
-          handleNumber(2)
-        }}
-      >
+      <button className='btn' value={2} onClick={handleNumber}>
         2
       </button>
-      <button
-        className='btn'
-        onClick={() => {
-          handleNumber(3)
-        }}
-      >
+      <button className='btn' value={3} onClick={handleNumber}>
         3
       </button>
-      <button
-        className='btn'
-        onClick={() => {
-          console.log('dodawanie')
-        }}
-      >
+      <button className='btn' value={'+'} onClick={handleOperator}>
         +
       </button>
       <button className='btn'>+/-</button>
-      <button
-        className='btn'
-        onClick={() => {
-          handleNumber(0)
-        }}
-      >
+      <button className='btn' value={0} onClick={handleNumber}>
         0
       </button>
       <button className='btn'>,</button>

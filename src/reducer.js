@@ -3,7 +3,8 @@ const reducer = (state, action) => {
     case 'OBLICZ':
       return { ...state }
     case 'DODAJ':
-      return console.log('dodaj')
+      const suma = state.liczba1
+      return { ...state, wynik: suma }
     case 'GENERUJ_L1': {
       let tab = []
     }

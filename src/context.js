@@ -6,7 +6,7 @@ const AppContext = React.createContext()
 const AppProvider = ({ children }) => {
   const initialState = {
     wynik: 0,
-    liczba1: 0,
+    liczba1: '',
     liczba2: 0,
   }
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -24,8 +24,14 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'GENERUJ_L2' })
   }
 
-  const handleNumber = (num) => {
-    console.log(num)
+  const handleNumber = (e) => {
+    initialState.liczba1 += e.currentTarget.value
+    // console.log('nr=', e.currentTarget.value, 'name=', e.currentTarget.name)
+    console.log('handleNumber=', e.currentTarget.value, initialState.liczba1)
+  }
+
+  const handleOperator = (e) => {
+    console.log('operator', e.currentTarget.value)
   }
 
   const [mode, setMode] = useState(true)
@@ -48,6 +54,7 @@ const AppProvider = ({ children }) => {
         oblicz,
         dodaj,
         handleNumber,
+        handleOperator,
         generujL1,
         generujL2,
       }}
