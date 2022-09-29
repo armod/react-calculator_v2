@@ -5,7 +5,7 @@ const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
   const initialState = {
-    wynik: 0,
+    wynik: '',
     liczba1: '',
     liczba2: '',
     operator: '',
@@ -26,6 +26,9 @@ const AppProvider = ({ children }) => {
     if (state.operator === '/') {
       rezultat = Number(state.liczba1) / Number(state.liczba2)
     }
+    if (state.operator === 'sqrt') {
+      rezultat = Math.sqrt(Number(state.liczba1))
+    }
     dispatch({ type: 'OBLICZ', payload: rezultat })
   }
 
@@ -34,13 +37,32 @@ const AppProvider = ({ children }) => {
       state.operator = ''
       e.preventDefault()
       state.liczba1 += e.currentTarget.value
-      console.log('liczba1=', state.liczba1)
+      console.log('liczba1=', typeof state.liczba1)
       dispatch({ type: 'SHOW_L1', payload: state.liczba1 })
     }
     if (state.operator !== '') {
       e.preventDefault()
       state.liczba2 += e.currentTarget.value
       console.log('liczba2=', state.liczba2)
+      dispatch({ type: 'SHOW_L2', payload: state.liczba2 })
+    }
+  }
+
+  const handleBack = () => {
+    if (state.liczba2 === '') {
+      let temp = []
+      temp = state.liczba1.split('')
+      temp.pop()
+      state.liczba1 = temp.join('')
+      console.log('pop', temp)
+      dispatch({ type: 'SHOW_L1', payload: state.liczba1 })
+    }
+    if (state.liczba2 !== '') {
+      let temp = []
+      temp = state.liczba2.split('')
+      temp.pop()
+      state.liczba2 = temp.join('')
+      console.log('pop2', temp)
       dispatch({ type: 'SHOW_L2', payload: state.liczba2 })
     }
   }
@@ -58,6 +80,14 @@ const AppProvider = ({ children }) => {
     if (e.currentTarget.value === '/') {
       state.operator = '/'
     }
+    if (e.currentTarget.value === 'sqrt') {
+      state.operator = 'sqrt' //<>&radic;</>
+    }
+    //po wybraniu operatora (jeśli jest już wynik) ustaw liczbe1 na aktualny wynik działania, a liczbe2 ustaw jako pusty
+    if (state.wynik !== '') {
+      state.liczba1 = state.wynik
+      state.liczba2 = ''
+    }
     dispatch({ type: 'SHOW_OPERATOR', payload: state.operator })
     console.log('operator', e.currentTarget.value)
   }
@@ -67,11 +97,11 @@ const AppProvider = ({ children }) => {
   const [mode, setMode] = useState(true)
 
   const changeColor = () => {
-    if (mode == true) {
+    if (mode === true) {
       console.log(mode)
       setMode(false)
     } else {
-      setMode(true)
+      setMode(false)
     }
   }
 
@@ -80,11 +110,11 @@ const AppProvider = ({ children }) => {
       value={{
         ...state,
         mode,
-        changeColor,
         oblicz,
         clear,
         handleNumber,
         handleOperator,
+        handleBack,
       }}
     >
       {children}

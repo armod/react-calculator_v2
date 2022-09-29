@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useGlobalContext } from '../context'
+import { BsBackspace } from 'react-icons/bs'
 import { Button } from './Button'
 
 export const ButtonsTable = () => {
-  const { oblicz, handleNumber, clear, handleOperator } = useGlobalContext()
+  const { oblicz, handleNumber, clear, handleOperator, handleBack } = useGlobalContext()
   return (
     <>
       <button className='btn' onClick={clear}>
@@ -12,7 +13,9 @@ export const ButtonsTable = () => {
       <button className='btn' value={'/'} onClick={handleOperator}>
         /
       </button>
-      <button className='btn podwojny'>back</button>
+      <button className='btn podwojny' onClick={handleBack}>
+        <BsBackspace />
+      </button>
       <button className='btn' value={7} onClick={handleNumber}>
         7
       </button>
@@ -49,11 +52,15 @@ export const ButtonsTable = () => {
       <button className='btn' value={'+'} onClick={handleOperator}>
         +
       </button>
-      <button className='btn'>+/-</button>
+      <button className='btn' value={'sqrt'} onClick={handleOperator}>
+        <>&radic;</>
+      </button>
       <button className='btn' value={0} onClick={handleNumber}>
         0
       </button>
-      <button className='btn'>,</button>
+      <button className='btn' value={'.'} onClick={handleNumber}>
+        ,
+      </button>
       <button className='btn rowna' value={'='} onClick={oblicz}>
         =
       </button>

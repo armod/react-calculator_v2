@@ -17,14 +17,6 @@ body {
   height: 90vh;
   border: 2px solid red;
   // background-color: #fff;
-  .light {
-    background-color: rgb(189, 191, 192);
-    border: 1px solid black;
-  }
-}
-.dark {
-  border: 1px solid black;
-  background-color: rgb(134, 129, 129);
 }
 
 .container {
@@ -41,7 +33,15 @@ body {
   border: 0px solid yellow;
   overflow: hidden;
   border: 1px solid black;
-  background-color: brown;
+  // background-color: brown;
+  .light {
+    background-color: rgb(189, 191, 192);
+    border: 1px solid black;
+  }
+  .dark {
+    border: 1px solid black;
+    background-color: rgb(134, 129, 129);
+  }
 }
 
 .btn {

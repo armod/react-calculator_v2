@@ -6,12 +6,7 @@ export const SwitchButton = () => {
   const { changeColor } = useGlobalContext()
   return (
     <div className='switch'>
-      <input
-        type='checkbox'
-        onChange={() => {
-          changeColor()
-        }}
-      />
+      <input type='checkbox' />
     </div>
   )
 }

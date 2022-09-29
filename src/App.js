@@ -7,11 +7,9 @@ import { useGlobalContext } from './context'
 function App() {
   const { mode } = useGlobalContext()
   return (
-    <div className='wrapper'>
-      <div className={`${mode ? 'wrapper light' : 'wrapper dark'}`}>
-        <SwitchButton />
-        <Container />
-      </div>
+    <div className={`${mode ? 'container light' : 'container dark'}`}>
+      <SwitchButton />
+      <Container />
     </div>
   )
 }
