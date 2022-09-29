@@ -11,6 +11,7 @@ const AppProvider = ({ children }) => {
     operator: '',
   }
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [mode, setMode] = useState(true)
 
   const oblicz = () => {
     let rezultat = 0
@@ -94,7 +95,6 @@ const AppProvider = ({ children }) => {
   const clear = () => {
     dispatch({ type: 'CLEAR' })
   }
-  const [mode, setMode] = useState(true)
 
   const changeColor = () => {
     if (mode === true) {
@@ -111,6 +111,7 @@ const AppProvider = ({ children }) => {
         ...state,
         mode,
         oblicz,
+        changeColor,
         clear,
         handleNumber,
         handleOperator,

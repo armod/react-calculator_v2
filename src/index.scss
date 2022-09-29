@@ -14,11 +14,12 @@ body {
 }
 
 .wrapper {
-  height: 90vh;
-  border: 2px solid red;
+  position: static;
+  display: flex;
+  font-size: 2rem;
+  border: 1px solid red;
   // background-color: #fff;
 }
-
 .container {
   position: absolute;
   display: grid;
