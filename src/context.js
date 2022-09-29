@@ -97,12 +97,8 @@ const AppProvider = ({ children }) => {
   }
 
   const changeColor = () => {
-    if (mode === true) {
-      console.log(mode)
-      setMode(false)
-    } else {
-      setMode(false)
-    }
+    setMode(!mode)
+    console.log('mode=', mode)
   }
 
   return (

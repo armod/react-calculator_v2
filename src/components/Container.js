@@ -8,7 +8,7 @@ export const Container = () => {
   const { mode, changeColor } = useGlobalContext()
   return (
     <>
-      <div className='wrapper'>
+      <div className='header'>
         <BsMoonFill />
         <BsSun onClick={changeColor} />
       </div>
