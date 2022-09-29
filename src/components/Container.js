@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonsTable } from './ButtonsTable'
 import { Result } from './Result'
-import { BsSun, BsMoonFill } from 'react-icons/bs'
+import { BsSun, BsMoon } from 'react-icons/bs'
 import { useGlobalContext } from '../context'
 
 export const Container = () => {
@@ -9,12 +9,16 @@ export const Container = () => {
   return (
     <>
       <div className='header'>
-        <BsMoonFill />
-        <BsSun onClick={changeColor} />
+        <div className='icon-mode' onClick={changeColor}>
+          <BsSun className={`${mode ? 'show' : 'icon-mode'}`} />
+          <BsMoon className={`${mode ? 'icon-mode' : 'show'}`} />
+        </div>
       </div>
-      <div className={`${mode ? 'container light' : 'container dark'}`}>
-        <Result />
-        <ButtonsTable />
+      <div className={`${mode ? 'wrapper light' : 'wrapper dark'}`}>
+        <div className='container'>
+          <Result />
+          <ButtonsTable />
+        </div>
       </div>
     </>
   )
