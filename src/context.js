@@ -3,6 +3,18 @@ import reducer from './reducer'
 
 const AppContext = React.createContext()
 
+function precise(x) {
+  if (x > 0) {
+    while (x.slice(-1) === '0') {
+      x = x.slice(0, -1)
+    }
+    if (x.slice(-1) === '.') {
+      x = x.slice(0, -1)
+    }
+  }
+  return Number(x)
+}
+
 const AppProvider = ({ children }) => {
   const initialState = {
     wynik: '',
@@ -16,32 +28,21 @@ const AppProvider = ({ children }) => {
   const oblicz = () => {
     let rezultat = 0
     let strRezultat = ''
-    let wynik = 0
     if (state.operator === '+') {
-      wynik = Number(state.liczba1) + Number(state.liczba2)
-      strRezultat = wynik
-      console.log('strRez=', strRezultat)
-      strRezultat = wynik.toPrecision(12)
-      console.log('strRez-prec', strRezultat)
-      if (strRezultat > 0) {
-        while (strRezultat.slice(-1) === '0') {
-          strRezultat = strRezultat.slice(0, -1)
-        }
-        if (strRezultat.slice(-1) === '.') {
-          strRezultat = strRezultat.slice(0, -1)
-        }
-      }
-      console.log('num=', typeof Number(strRezultat))
-      rezultat = Number(strRezultat)
+      rezultat = precise((strRezultat = (Number(state.liczba1) + Number(state.liczba2)).toPrecision(10)))
     }
     if (state.operator === '-') {
-      rezultat = Number(state.liczba1) - Number(state.liczba2)
+      rezultat = precise((strRezultat = (Number(state.liczba1) - Number(state.liczba2)).toPrecision(10)))
     }
     if (state.operator === 'x') {
-      rezultat = Number(state.liczba1) * Number(state.liczba2)
+      rezultat = precise((strRezultat = (Number(state.liczba1) * Number(state.liczba2)).toPrecision(10)))
     }
     if (state.operator === '/') {
-      rezultat = Number(state.liczba1) / Number(state.liczba2)
+      rezultat = precise((strRezultat = (Number(state.liczba1) / Number(state.liczba2)).toPrecision(10)))
+      console.log(rezultat)
+      if (rezultat === Infinity) {
+        rezultat = 'Error!'
+      }
     }
     if (state.operator === 'sqrt') {
       rezultat = Math.sqrt(Number(state.liczba1))
