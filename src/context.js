@@ -15,8 +15,24 @@ const AppProvider = ({ children }) => {
 
   const oblicz = () => {
     let rezultat = 0
+    let strRezultat = ''
+    let wynik = 0
     if (state.operator === '+') {
-      rezultat = Number(state.liczba1) + Number(state.liczba2)
+      wynik = Number(state.liczba1) + Number(state.liczba2)
+      strRezultat = wynik
+      console.log('strRez=', strRezultat)
+      strRezultat = wynik.toPrecision(12)
+      console.log('strRez-prec', strRezultat)
+      if (strRezultat > 0) {
+        while (strRezultat.slice(-1) === '0') {
+          strRezultat = strRezultat.slice(0, -1)
+        }
+        if (strRezultat.slice(-1) === '.') {
+          strRezultat = strRezultat.slice(0, -1)
+        }
+      }
+      console.log('num=', typeof Number(strRezultat))
+      rezultat = Number(strRezultat)
     }
     if (state.operator === '-') {
       rezultat = Number(state.liczba1) - Number(state.liczba2)
@@ -38,7 +54,7 @@ const AppProvider = ({ children }) => {
       state.operator = ''
       e.preventDefault()
       state.liczba1 += e.currentTarget.value
-      console.log('liczba1=', typeof state.liczba1)
+      console.log('liczba1=', state.liczba1)
       dispatch({ type: 'SHOW_L1', payload: state.liczba1 })
     }
     if (state.operator !== '') {
